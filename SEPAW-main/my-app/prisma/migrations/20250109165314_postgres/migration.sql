@@ -189,13 +189,13 @@ CREATE TABLE "borrowequipment_list" (
 ALTER TABLE "users" ADD CONSTRAINT "users_status_id_fkey" FOREIGN KEY ("status_id") REFERENCES "status"("status_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "takecareperson" ADD CONSTRAINT "takecareperson_users_id_fkey" FOREIGN KEY ("users_id") REFERENCES "users"("users_id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "takecareperson" ADD CONSTRAINT "takecareperson_gender_id_fkey" FOREIGN KEY ("gender_id") REFERENCES "gender"("gender_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "takecareperson" ADD CONSTRAINT "takecareperson_marry_id_fkey" FOREIGN KEY ("marry_id") REFERENCES "marrystatus"("marry_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "takecareperson" ADD CONSTRAINT "takecareperson_users_id_fkey" FOREIGN KEY ("users_id") REFERENCES "users"("users_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "safezone" ADD CONSTRAINT "safezone_takecare_id_fkey" FOREIGN KEY ("takecare_id") REFERENCES "takecareperson"("takecare_id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -204,19 +204,19 @@ ALTER TABLE "safezone" ADD CONSTRAINT "safezone_takecare_id_fkey" FOREIGN KEY ("
 ALTER TABLE "safezone" ADD CONSTRAINT "safezone_users_id_fkey" FOREIGN KEY ("users_id") REFERENCES "users"("users_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "location" ADD CONSTRAINT "location_users_id_fkey" FOREIGN KEY ("users_id") REFERENCES "users"("users_id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "location" ADD CONSTRAINT "location_takecare_id_fkey" FOREIGN KEY ("takecare_id") REFERENCES "takecareperson"("takecare_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "borrowequipment" ADD CONSTRAINT "borrowequipment_borrow_user_id_fkey" FOREIGN KEY ("borrow_user_id") REFERENCES "users"("users_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "location" ADD CONSTRAINT "location_users_id_fkey" FOREIGN KEY ("users_id") REFERENCES "users"("users_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "borrowequipment" ADD CONSTRAINT "borrowequipment_borrow_approver_fkey" FOREIGN KEY ("borrow_approver") REFERENCES "users"("users_id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "borrowequipment" ADD CONSTRAINT "borrowequipment_borrow_return_user_id_fkey" FOREIGN KEY ("borrow_return_user_id") REFERENCES "users"("users_id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "borrowequipment" ADD CONSTRAINT "borrowequipment_borrow_user_id_fkey" FOREIGN KEY ("borrow_user_id") REFERENCES "users"("users_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "borrowequipment_list" ADD CONSTRAINT "borrowequipment_list_borrow_id_fkey" FOREIGN KEY ("borrow_id") REFERENCES "borrowequipment"("borrow_id") ON DELETE RESTRICT ON UPDATE CASCADE;
